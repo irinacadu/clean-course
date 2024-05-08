@@ -1,45 +1,41 @@
 (() => {
   function isRedFruit(fruit: string): boolean {
     const fruitsNames: string[] = ["manzana", "cereza", "ciruela"];
-    if (fruitsNames.includes(fruit)) return true;
-    return false;
+    return fruitsNames.includes(fruit);
   }
-
-  function getFruitsByColor(color: string): string[] {
+  type FruitColor = "red" | "yellow" | "purple";
+  function getFruitsByColor(color: FruitColor): string[] {
     const redFruits: string[] = ["manzana", "fresa"];
     const yellowFruits: string[] = ["piña", "banana"];
     const purpleFruits: string[] = ["moras", "uvas"];
-    switch (color) {
-      case "red":
-        return redFruits;
-        break;
-      case "yellow":
-        return yellowFruits;
-        break;
-      case "purple":
-        return purpleFruits;
-        break;
-      default:
-        throw Error("the color must be: red, yellow, purple");
-        break;
-    }
+
+    const fruitsByColor = {
+      red: redFruits,
+      yellow: yellowFruits,
+      purple: purpleFruits,
+    };
+
+    if (!Object.keys(fruitsByColor).includes(color))
+      throw Error("the color must be: red, yellow, purple");
+    return fruitsByColor[color];
+
   }
 
-  // Simplificar esta función
+
   let isFirstStepWorking = true;
   let isSecondStepWorking = true;
   let isThirdStepWorking = true;
   let isFourthStepWorking = true;
 
   function workingSteps() {
-    debugger
-    if (isFirstStepWorking != true) return "First step broken.";
-    if (isSecondStepWorking != true) return "Second step broken.";
-    if (isThirdStepWorking != true) return "Third step broken.";
+    if (!isFirstStepWorking ) return "First step broken.";
+    if (!isSecondStepWorking ) return "Second step broken.";
+    if (!isThirdStepWorking ) return "Third step broken.";
     return isFourthStepWorking ? "Working properly!" : "Fourth step broken.";
   }
 
   // isRedFruit
+
   console.log({ isRedFruit: isRedFruit("cereza"), fruit: "cereza" }); // true
   console.log({ isRedFruit: isRedFruit("piña"), fruit: "piña" }); // true
 
