@@ -6,57 +6,41 @@
     birthdate: Date;
   }
 
-  class Person {
-    public name: string;
-    public gender: Gender;
-    public birthdate: Date;
-
-    constructor({ name, gender, birthdate }: PersonProps) {
-      (this.name = name), (this.gender = gender), (this.birthdate = birthdate);
-    }
-  }
-
   interface UserProps {
     email: string;
     role: string;
     lastAcess: Date;
   }
-  class User {
-    public email: string;
-    public role: string;
-    private lastAcess: Date;
-    public personProps: PersonProps;
 
-    constructor(
-      { email, role, lastAcess }: UserProps,
-      personProps: PersonProps
-    ) {
-      (this.email = email),
-        (this.role = role),
-        (this.lastAcess = lastAcess),
-        (this.personProps = personProps);
-    }
-  }
 
-  interface UserSettingsProps {
+  interface SettingsProps {
     workingDirectory: string;
     lastOpenfolder: string;
   }
 
   class UserSettings {
-    public workingDirectory: string;
-    public lastOpenfolder: string;
+ 
+    public settingsProps: SettingsProps;
     public personProps: PersonProps;
-    public user: UserProps;
+    public userProps: UserProps;
     constructor(
-      { workingDirectory, lastOpenfolder }: UserSettingsProps,
+      settingsProps: SettingsProps,
       personProps: PersonProps,
-      user: UserProps
+      userProps: UserProps
     ) {
-      (this.workingDirectory = workingDirectory),
-        (this.lastOpenfolder = lastOpenfolder),
-        (this.user = user),
+      (this.settingsProps = settingsProps),
+        (this.userProps = userProps),
         (this.personProps = personProps);
     }
   }
+
+  const userSettings = new UserSettings(
+    {workingDirectory:'/home',lastOpenfolder:'home'},
+    {name: 'Irina', gender: 'F', birthdate: new Date('12-14-1983')},
+    {email:'fernando@google.com',role:'Admin',lastAcess: new Date('1985-10-21')}
+   
+
+);
+
+console.log({userSettings});
 })();

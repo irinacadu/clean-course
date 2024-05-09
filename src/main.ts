@@ -1,5 +1,5 @@
 import './style.css'
-import './08-classes-b'
+import './09-tareaResponsabilidadUnica'
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = `
