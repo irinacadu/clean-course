@@ -1,5 +1,5 @@
 import './style.css'
-import './05-refactorizar-funciones'
+import './06-dry'
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = `
