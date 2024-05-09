@@ -16,7 +16,7 @@ class Product {
         case "number":
           if (<number>(<unknown>this[key]) <= 0) throw Error(`${key} is empty`);
           break;
-      
+
         default:
           throw Error(`${typeof this[key]} is not valid`);
       }
@@ -36,7 +36,6 @@ class Product {
     return `${this.name},${this.price},${this.size}`;
   }
 }
-
 
 (() => {
   const bluePants = new Product("Blue large Pants", 10, "M");
